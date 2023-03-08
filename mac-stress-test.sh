@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Make the script executable
+chmod +x "$0"
+
 # Function to stress the CPU
 stress_cpu () {
   # Set the number of CPU cores to use
@@ -56,6 +59,9 @@ fi
 
 # Wait for the stress tests to finish
 wait
+
+# Kill any processes associated with this script
+kill $(pgrep -f $0)
 
 # Print a message when the stress tests are done
 echo "Stress tests completed"
